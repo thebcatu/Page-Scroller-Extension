@@ -1,3 +1,32 @@
 {
-  Manifest code here
+  "name": "Amazing Fast Scroller",
+  "version": "1.0.0",
+  "description": "Hyper-fast scrolling for any website - reach the bottom of any page in seconds",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "persist_across_sessions": true
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
 }
